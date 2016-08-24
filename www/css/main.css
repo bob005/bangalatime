@@ -1,0 +1,136 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+@font-face {
+    font-family: '4cbengali';
+    src: url('fonts/4CBengali/4CBengali.eot');
+    src: local('â˜º'), url('fonts/4CBengali/4CBengali.woff') format('woff'), url('fonts/4CBengali/4CBengali.ttf') format('truetype'), url('fonts/4CBengali/4CBengali.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans Bengali';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/notosansbengali/NotoSansBengali-Regular.eot);
+    src: url(fonts/notosansbengali/NotoSansBengali-Regular.eot?#iefix) format('embedded-opentype'), url(fonts/notosansbengali/NotoSansBengali-Regular.woff2) format('woff2'), url(fonts/notosansbengali/NotoSansBengali-Regular.woff) format('woff'), url(fonts/notosansbengali/NotoSansBengali-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Sans Bengali';
+    font-style: normal;
+    font-weight: 700;
+    src: url(fonts/notosansbengali/NotoSansBengali-Bold.eot);
+    src: url(fonts/notosansbengali/NotoSansBengali-Bold.eot?#iefix) format('embedded-opentype'), url(fonts/notosansbengali/NotoSansBengali-Bold.woff2) format('woff2'), url(fonts/notosansbengali/NotoSansBengali-Bold.woff) format('woff'), url(fonts/notosansbengali/NotoSansBengali-Bold.ttf) format('truetype');
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+* {
+  margin: 0;
+  padding: 0; 
+}
+
+
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, 'Noto Sans Bengali', Arial, sans-serif !important;
+    font-size: 12px;
+}
+
+img {-webkit-transform: translate3d(0, 0, 0);}
+
+.slideout-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    width: 256px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+    -webkit-transform: translate3d(0,0,0);
+    background: url(../img/bg.jpg);
+    background-size: cover;
+    box-sizing: border-box;
+    border-right: 1px solid transparent;
+}
+
+.slideout-panel {
+    position:relative;
+    z-index: 1;
+    -webkit-transform: translate3d(0,0,0);
+    will-change: transform;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: #F4F4F4;
+    background-image: linear-gradient(top, #E4E4E4 0%, #F4F4F4 51%);
+    background-image: -webkit-linear-gradient(top, #E4E4E4 0%, #F4F4F4 51%);
+    background-image: -ms-linear-gradient(top, #E4E4E4 0%, #F4F4F4 51%);
+    background-image: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            color-stop(0, #E4E4E4),
+            color-stop(0.51, #F4F4F4)
+    );
+    background-attachment: fixed;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+    overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+    display: block;
+}
+
+
+ul.sidemenu {padding: 0; margin: 0; list-style: none;}
+ul.sidemenu li {padding: 0; border-bottom: 1px solid #191919; border-top: 1px solid #616060; background: #3D3D3E url(../img/pattern.png);}
+ul.sidemenu li:first-child {}
+ul.sidemenu li a {display: block; padding: 5px 10px; box-sizing: border-box; text-align: left; color: white; text-decoration: none; font-size: 18px;}
+ul.sidemenu li .icon {float: left; color: #0D5ABE; display: block; height: 33px; width: 33px; margin-top: -3px; background: transparent; margin-right: 10px;}
+#menu > img.logo {margin: 15px auto; max-width: 70%; float: none; width: 100%; height: auto;display: block;}
+
+
+.slideout-panel .page {min-height: 100vh}
+.slideout-panel header {background: #eb112a; color: white; padding: 6px}
+.slideout-panel header:after, .slideout-panel:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
+.slideout-panel header .toggle-button {background: transparent; border: none; outline: none; -webkit-appearance: none; font-size: 32px; line-height: 32px; display: block; width: 32px; height: 32px; padding: 0; margin: 0; overflow: hidden; color: inherit; float: left}
+.slideout-panel header .toggle-button i {-webkit-transition: all 0.5s ease-in-out; -webkit-transform: rotate3d(0,0,0,0deg); display: inline-block}
+.slideout-panel header .toggle-button i.flaticon-close {-webkit-transform: rotate3d(16,16,16,360deg);}
+.slideout-panel header img {height: 32px; width: auto; display: block; line-height: 32px; float: left; margin-left: 6px}
+.slideout-panel header a {display: block; float: right; height: 32px; line-height: 32px; padding: 0 0 0 6px; margin: 0; color: white; text-decoration: none}
+.slideout-panel header a i {font-size: 32px; display: block; float: left}
+.slideout-panel header a span { display: block; float: left; font-size: 18px; line-height: 18px; padding: 8px 0 0 6px;}
+
+
