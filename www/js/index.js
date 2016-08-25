@@ -47,7 +47,7 @@ function loadlist(id,last){
 function slide(hrf) {
     direction = 'none';
     for (k in pageDirectionStorage) {
-        if (hrf.indexOf(k) >= 0) {
+        if (hrf.search(k)){
             direction = pageDirectionStorage['k'];
         } else {
             direction = 'down';
