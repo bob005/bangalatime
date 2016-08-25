@@ -102,7 +102,7 @@ function slide(hrf) {
                     alert('error: ' + msg);
                 });
         }
-    }, 500);
+    }, 800);
 
 
 
