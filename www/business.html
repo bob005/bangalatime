@@ -125,15 +125,15 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
     pageDirectionStorage = {
-        'index':'none',
-        'kolkata':'right',
-        'state':'right',
-        'country':'right',
-        'world':'right',
-        'sports':'right',
-        'entertainment':'right',
-        'lifestyle':'right',
-        'business':'right',
+        'index':'left',
+        'kolkata':'left',
+        'state':'left',
+        'country':'left',
+        'world':'left',
+        'sports':'left',
+        'entertainment':'left',
+        'lifestyle':'left',
+        'business':'none',
         'video':'right',
         'live':'up',
         'post':'flip'
@@ -141,10 +141,10 @@
     $('.page').scroll(function(e){
         if(($('.page').scrollTop() + $('.page').height()) > ($('.postlist').height() - 0) && scrollDetectEnable){
             scrollDetectEnable = false;
-            loadlist('0',$('.postlist').attr('data-last'));
+            loadlist('12',$('.postlist').attr('data-last'));
         }
     });
-    loadlist('0','0');
+    loadlist('12','0');
     app.initialize();
 </script>
 </body>

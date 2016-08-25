@@ -40,6 +40,27 @@
     src: url(fonts/notosansbengali/NotoSansBengali-Bold.eot?#iefix) format('embedded-opentype'), url(fonts/notosansbengali/NotoSansBengali-Bold.woff2) format('woff2'), url(fonts/notosansbengali/NotoSansBengali-Bold.woff) format('woff'), url(fonts/notosansbengali/NotoSansBengali-Bold.ttf) format('truetype');
 }
 
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    -webkit-animation: rotating 2s linear infinite;
+}
+
 * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -122,7 +143,7 @@ ul.sidemenu li .icon {float: left; color: #0D5ABE; display: block; height: 33px;
 #menu > img.logo {margin: 15px auto; max-width: 70%; float: none; width: 100%; height: auto;display: block;}
 
 
-.slideout-panel .page {min-height: 99.9vh; padding-top: 44px; box-sizing: border-box}
+.slideout-panel .page {min-height: 99.9vh; max-height: 100vh; padding-top: 44px; box-sizing: border-box; overflow-y: auto; -webkit-overflow-scrolling: touch;}
 .slideout-panel header {background: #eb112a; color: white; padding: 6px; position: fixed; z-index: 10; display: block; box-sizing: border-box; width: 100%; top: 0}
 .slideout-panel header:after, .slideout-panel:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
 .slideout-panel header .toggle-button {background: transparent; border: none; outline: none; -webkit-appearance: none; font-size: 32px; line-height: 32px; display: block; width: 32px; height: 32px; padding: 0; margin: 0; overflow: hidden; color: inherit; float: left}
@@ -141,19 +162,15 @@ ul.postlist {
 }
 
 ul.postlist li {
-    display: block;
-    padding: 0;
-    margin: 1px 0;
-    position: relative;
-    height: 180px;
-    overflow: hidden;
+    display: block; padding: 0; border-bottom: 1px solid #eb112a; position: relative; height: 181px; overflow: hidden;
 }
 
 ul.postlist li img {
     position: absolute;
     left: 50%;
     top: 50%;
-    -webkit-transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    min-height: 100%;
 }
 
 ul.postlist li .overlay {

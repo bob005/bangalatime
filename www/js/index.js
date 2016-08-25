@@ -16,7 +16,34 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+scrollDetectEnable = true;
 var videoUrl = "http://edge-ind.inapcdn.in:1935/berry1/smarts2.stream_aac/playlist.m3u8";
+function loadlist(id,last){
+    $.ajax({
+        url: 'http://banglatimetv.com/jason_data.php',
+        type: 'post',
+        datatype:'json',
+        crossDomain: true,
+        data: {type: 'list', id:id, range:10, first: $("ul.postlist").attr('data-first'), last:last},
+        success: function(reply){
+            reply = $.parseJSON(reply);
+            if(reply[0]){
+                for(post in reply){
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post?id='+reply[post].id+'\')"><div style="background: url(http://banglatimetv.com/news/'+reply[post].img+');-webkit-filter: blur(30px); z-index: 0; width: 120%; height: 120%; margin-top: -10%; margin-left: -10%; background-size: cover; background-position-y: 50%;"></div><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+reply[post].dte+'</span></div></a></li>');
+                    $("ul.postlist").attr('data-last',reply[post].id);
+                    if($("ul.postlist").attr('data-first')=='0'){$("ul.postlist").attr('data-first',reply[post].id);}
+                }
+                scrollDetectEnable = true;
+            } else {
+                $('.loaderror').html('That\'s all folks!!');
+                $('.flaticon-refresh-button').addClass('flaticon-check-square').removeClass('flaticon-refresh-button').removeClass('rotating');
+            }
+        },
+        error: function(reply){
+            $('.loaderror').html(reply);
+        }
+    });
+}
 function slide(hrf) {
     direction = 'none';
     for (k in pageDirectionStorage) {
@@ -34,11 +61,24 @@ function slide(hrf) {
         'fixedPixelsTop': 44, // optional, the number of pixels of your fixed header, default 0 (iOS and Android)
         'fixedPixelsBottom': 0  // optional, the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
     };
-    if (direction != 'none') {
+    if (direction != 'none' && direction != 'flip') {
         window.plugins.nativepagetransitions.slide(
             theOptions,
             function () {
                 console.log('------------------- slide transition finished');
+            },
+            function (msg) {
+                alert('error: ' + msg);
+            });
+    } else if (direction == 'flip') {
+        window.plugins.nativepagetransitions.flip({
+                'direction': 'right',
+                'duration': 1500,
+                'iosdelay': 20,
+                'href': hrf
+            },
+            function () {
+                console.log('------------------- flip transition finished');
             },
             function (msg) {
                 alert('error: ' + msg);

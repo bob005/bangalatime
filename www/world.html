@@ -125,11 +125,11 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
     pageDirectionStorage = {
-        'index':'none',
-        'kolkata':'right',
-        'state':'right',
-        'country':'right',
-        'world':'right',
+        'index':'left',
+        'kolkata':'left',
+        'state':'left',
+        'country':'left',
+        'world':'none',
         'sports':'right',
         'entertainment':'right',
         'lifestyle':'right',
@@ -141,10 +141,10 @@
     $('.page').scroll(function(e){
         if(($('.page').scrollTop() + $('.page').height()) > ($('.postlist').height() - 0) && scrollDetectEnable){
             scrollDetectEnable = false;
-            loadlist('0',$('.postlist').attr('data-last'));
+            loadlist('5',$('.postlist').attr('data-last'));
         }
     });
-    loadlist('0','0');
+    loadlist('5','0');
     app.initialize();
 </script>
 </body>
