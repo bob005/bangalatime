@@ -61,7 +61,7 @@
     margin: 0;
     padding: 0;
 }
-*:not(header):not(div.page){-webkit-transform: translate3d(0,0,0);}
+*{-webkit-transform: translate3d(0,0,0);}
 
 
 
@@ -125,8 +125,8 @@ ul.sidemenu li .icon {float: left; color: #0D5ABE; display: block; height: 33px;
 #menu > img.logo {margin: 15px auto; max-width: 70%; float: none; width: 100%; height: auto;display: block;}
 
 
-.slideout-panel .page {min-height: 99.9vh; max-height: 100vh; padding-top: 44px; box-sizing: border-box; overflow-y: auto; -webkit-overflow-scrolling: touch;}
-.slideout-panel header {background: #eb112a; color: white; padding: 6px; z-index: 10; display: block; box-sizing: border-box; width: 100%; position: fixed; top: 0; left: 0; height: 44px;}
+.slideout-panel .page {height: calc(100vh - 44px); padding-top: 44px; box-sizing: border-box; overflow-y: auto; -webkit-overflow-scrolling: touch;}
+.slideout-panel header {background: #eb112a; color: white; padding: 6px; z-index: 10; display: block; box-sizing: border-box; width: 100%; height: 44px;}
 .slideout-panel header:after, .slideout-panel:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
 .slideout-panel header .toggle-button {background: transparent; border: none; outline: none; -webkit-appearance: none; font-size: 32px; line-height: 32px; display: block; width: 32px; height: 32px; padding: 0; margin: 0; overflow: hidden; color: inherit; float: left}
 .slideout-panel header .toggle-button i {-webkit-transition: all 0.5s ease-in-out; -webkit-transform: rotate3d(0,0,0,0deg); display: inline-block}
