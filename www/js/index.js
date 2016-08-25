@@ -18,6 +18,20 @@
  */
 scrollDetectEnable = true;
 var videoUrl = "http://edge-ind.inapcdn.in:1935/berry1/smarts2.stream_aac/playlist.m3u8";
+var slideout = new Slideout({
+    'panel': document.getElementById('panel'),
+    'menu': document.getElementById('menu'),
+    'padding': 256,
+    'tolerance': 90,
+    'duration': 500,
+    'fx': 'ease-in-out'
+});
+slideout.on('beforeclose', function () {
+    $('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
+});
+slideout.on('beforeopen', function () {
+    $('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
+});
 function loadlist(id,last){
     $.ajax({
         url: 'http://banglatimetv.com/jason_data.php',
@@ -45,45 +59,49 @@ function loadlist(id,last){
     });
 }
 function slide(hrf) {
-    direction = 'none';
-    for (k in pageDirectionStorage) {
-        if (hrf.search(k)<0){
-            direction = pageDirectionStorage['k'];
-        } else {
-            direction = 'down';
+    $('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
+    $.when(slideout.close()).then(function(){
+        direction = 'none';
+        for (k in pageDirectionStorage) {
+            if (hrf.search(k)<0){
+                direction = pageDirectionStorage['k'];
+            } else {
+                direction = 'down';
+            }
         }
-    }
-    var theOptions = {
-        'direction': direction,
-        'duration': 500,
-        'slowdownfactor': -1,
-        'href': hrf,
-        'fixedPixelsTop': 44, // optional, the number of pixels of your fixed header, default 0 (iOS and Android)
-        'fixedPixelsBottom': 0  // optional, the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
-    };
-    if (direction != 'none' && direction != 'flip') {
-        window.plugins.nativepagetransitions.slide(
-            theOptions,
-            function () {
-                console.log('------------------- slide transition finished');
-            },
-            function (msg) {
-                alert('error: ' + msg);
-            });
-    } else if (direction == 'flip') {
-        window.plugins.nativepagetransitions.flip({
-                'direction': 'right',
-                'duration': 500,
-                'iosdelay': 20,
-                'href': hrf
-            },
-            function () {
-                console.log('------------------- flip transition finished');
-            },
-            function (msg) {
-                alert('error: ' + msg);
-            });
-    }
+        var theOptions = {
+            'direction': direction,
+            'duration': 500,
+            'slowdownfactor': -1,
+            'href': hrf,
+            'fixedPixelsTop': 44, // optional, the number of pixels of your fixed header, default 0 (iOS and Android)
+            'fixedPixelsBottom': 0  // optional, the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
+        };
+        if (direction != 'none' && direction != 'flip') {
+            window.plugins.nativepagetransitions.slide(
+                theOptions,
+                function () {
+                    console.log('------------------- slide transition finished');
+                },
+                function (msg) {
+                    alert('error: ' + msg);
+                });
+        } else if (direction == 'flip') {
+            window.plugins.nativepagetransitions.flip({
+                    'direction': 'right',
+                    'duration': 500,
+                    'iosdelay': 20,
+                    'href': hrf
+                },
+                function () {
+                    console.log('------------------- flip transition finished');
+                },
+                function (msg) {
+                    alert('error: ' + msg);
+                });
+        }
+    });
+
 
 }
 
@@ -91,15 +109,6 @@ function slide(hrf) {
 var app = {
     // Application Constructor
     initialize: function () {
-        var slideout = new Slideout({
-            'panel': document.getElementById('panel'),
-            'menu': document.getElementById('menu'),
-            'padding': 256,
-            'tolerance': 70,
-            'duration': 500,
-            'fx': 'ease-in-out'
-        });
-
         // Toggle button
         document.querySelector('.toggle-button').addEventListener('click', function () {
             slideout.toggle();
