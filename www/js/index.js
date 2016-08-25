@@ -27,10 +27,10 @@ var slideout = new Slideout({
     'fx': 'ease-in-out'
 });
 slideout.on('beforeclose', function () {
-    $('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
+    $('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
 });
 slideout.on('beforeopen', function () {
-    $('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
+    $('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
 });
 function loadlist(id,last){
     $.ajax({
@@ -59,8 +59,10 @@ function loadlist(id,last){
     });
 }
 function slide(hrf) {
-    $('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
-    $.when(slideout.close()).then(function(){
+    $('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
+    slideout.close();
+    setTimeout(function()
+    {
         direction = 'none';
         for (k in pageDirectionStorage) {
             if (hrf.search(k)<0){
@@ -100,7 +102,8 @@ function slide(hrf) {
                     alert('error: ' + msg);
                 });
         }
-    });
+    }, 500);
+
 
 
 }
