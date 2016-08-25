@@ -117,13 +117,13 @@ var app = {
             slideout.toggle();
         });
         this.bindEvents();
-        $('.toggle-button').click(function () {
-            if ($(this).children('.flaticon-menu-button').length) {
-                $(this).children('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
-            } else {
-                $(this).children('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
-            }
-        });
+        // $('.toggle-button').click(function () {
+        //     if ($(this).children('.flaticon-menu-button').length) {
+        //         $(this).children('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
+        //     } else {
+        //         $(this).children('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
+        //     }
+        // });
     },
     // Bind Event Listeners
     //
