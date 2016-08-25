@@ -17,21 +17,61 @@
  * under the License.
  */
 var videoUrl = "http://edge-ind.inapcdn.in:1935/berry1/smarts2.stream_aac/playlist.m3u8";
+function slide(hrf) {
+    direction = 'none';
+    for (k in pageDirectionStorage) {
+        if (hrf.indexOf(k) >= 0) {
+            direction = pageDirectionStorage['k'];
+        } else {
+            direction = 'down';
+        }
+    }
+    var theOptions = {
+        'direction': direction,
+        'duration': 2000,
+        'slowdownfactor': -1,
+        'href': hrf,
+        'fixedPixelsTop': 44, // optional, the number of pixels of your fixed header, default 0 (iOS and Android)
+        'fixedPixelsBottom': 0  // optional, the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
+    };
+    if (direction != 'none') {
+        window.plugins.nativepagetransitions.slide(
+            theOptions,
+            function () {
+                console.log('------------------- slide transition finished');
+            },
+            function (msg) {
+                alert('error: ' + msg);
+            });
+    }
 
-
+}
 
 
 var app = {
     // Application Constructor
     initialize: function () {
+        var slideout = new Slideout({
+            'panel': document.getElementById('panel'),
+            'menu': document.getElementById('menu'),
+            'padding': 256,
+            'tolerance': 70,
+            'duration': 500,
+            'fx': 'ease-in-out'
+        });
+
+        // Toggle button
+        document.querySelector('.toggle-button').addEventListener('click', function () {
+            slideout.toggle();
+        });
         this.bindEvents();
-		$('.toggle-button').click(function(){
-			if($(this).children('.flaticon-menu-button').length){
+        $('.toggle-button').click(function () {
+            if ($(this).children('.flaticon-menu-button').length) {
                 $(this).children('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
-            }else{
+            } else {
                 $(this).children('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
             }
-		});
+        });
     },
     // Bind Event Listeners
     //
@@ -71,8 +111,8 @@ var app = {
         setTimeout(function () {
             navigator.splashscreen.hide();
             setTimeout(function () {
-                $('.slidepage-container').css('height', $(window).height() - 42 + 'px');
-                $('.content section').css('height', $(window).height() - 42 - 39 + 'px');
+                // $('.slidepage-container').css('height', $(window).height() - 42 + 'px');
+                // $('.content section').css('height', $(window).height() - 42 - 39 + 'px');
             }, 2000);
         }, 2000);
     },
