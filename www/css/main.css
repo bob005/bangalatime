@@ -60,8 +60,8 @@
 * {
     margin: 0;
     padding: 0;
-    -webkit-transform: translate3d(0,0,0);
 }
+*:not(header){-webkit-transform: translate3d(0,0,0);}
 
 
 
