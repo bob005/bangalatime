@@ -104,17 +104,6 @@ img {-webkit-transform: translate3d(0, 0, 0);}
     max-height: 100%;
     overflow-y: auto;
     background-color: #F4F4F4;
-    background-image: linear-gradient(top, #E4E4E4 0%, #F4F4F4 51%);
-    background-image: -webkit-linear-gradient(top, #E4E4E4 0%, #F4F4F4 51%);
-    background-image: -ms-linear-gradient(top, #E4E4E4 0%, #F4F4F4 51%);
-    background-image: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            color-stop(0, #E4E4E4),
-            color-stop(0.51, #F4F4F4)
-    );
-    background-attachment: fixed;
 }
 
 .slideout-open,
@@ -175,7 +164,6 @@ ul.postlist li .overlay {
     width: 100%;
     height: 100%;
     background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
-    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
     vertical-align: bottom;
 }
 
