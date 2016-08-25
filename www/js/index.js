@@ -47,13 +47,12 @@ function loadlist(id,last){
 function slide(hrf) {
     direction = 'none';
     for (k in pageDirectionStorage) {
-        if (hrf.search(k)){
+        if (hrf.search(k)<0){
             direction = pageDirectionStorage['k'];
         } else {
             direction = 'down';
         }
     }
-    alert(direction);
     var theOptions = {
         'direction': direction,
         'duration': 500,
