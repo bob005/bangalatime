@@ -137,6 +137,9 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
+        if(window.MobileAccessibility){
+            window.MobileAccessibility.usePreferredTextZoom(false);
+        }
         var push = PushNotification.init({
             "android": {"senderID": "335673861035"},
             "ios": {"alert": "true", "badge": "true", "sound": "true"}
