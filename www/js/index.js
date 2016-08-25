@@ -53,9 +53,10 @@ function slide(hrf) {
             direction = 'down';
         }
     }
+    alert(direction);
     var theOptions = {
         'direction': direction,
-        'duration': 2000,
+        'duration': 500,
         'slowdownfactor': -1,
         'href': hrf,
         'fixedPixelsTop': 44, // optional, the number of pixels of your fixed header, default 0 (iOS and Android)
@@ -73,7 +74,7 @@ function slide(hrf) {
     } else if (direction == 'flip') {
         window.plugins.nativepagetransitions.flip({
                 'direction': 'right',
-                'duration': 1500,
+                'duration': 500,
                 'iosdelay': 20,
                 'href': hrf
             },
