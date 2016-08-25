@@ -22,7 +22,7 @@ var slideout = new Slideout({
     'panel': document.getElementById('panel'),
     'menu': document.getElementById('menu'),
     'padding': 256,
-    'tolerance': 150,
+    'tolerance': 90,
     'duration': 500,
     'fx': 'ease-in-out'
 });
