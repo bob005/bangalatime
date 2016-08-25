@@ -29,7 +29,7 @@ function loadlist(id,last){
             reply = $.parseJSON(reply);
             if(reply[0]){
                 for(post in reply){
-                    $("ul.postlist").append('<li><a href="javascript:slide(\'post?id='+reply[post].id+'\')"><div style="background: url(http://banglatimetv.com/news/'+reply[post].img+');-webkit-filter: blur(30px); z-index: 0; width: 120%; height: 120%; margin-top: -10%; margin-left: -10%; background-size: cover; background-position-y: 50%;"></div><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+reply[post].dte+'</span></div></a></li>');
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post?id='+reply[post].id+'\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+reply[post].dte+'</span></div></a></li>');
                     $("ul.postlist").attr('data-last',reply[post].id);
                     if($("ul.postlist").attr('data-first')=='0'){$("ul.postlist").attr('data-first',reply[post].id);}
                 }
