@@ -81,7 +81,10 @@ function slide(hrf,direction) {
         var theOptions = {
             'direction': direction,
             'duration': 500,
-            'slowdownfactor': -1,
+            'backgroundColor' : "#F4F4F4",
+            'slowdownfactor': 1,
+            'androiddelay': 20,
+            'iosdelay': 20,
             'href': hrf,
             'fixedPixelsTop': 44, // optional, the number of pixels of your fixed header, default 0 (iOS and Android)
             'fixedPixelsBottom': 0  // optional, the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
@@ -96,6 +99,8 @@ function slide(hrf,direction) {
             window.plugins.nativepagetransitions.flip({
                     'direction': 'right',
                     'duration': 500,
+                    'backgroundColor' : "#F4F4F4",
+                    'androiddelay': 20,
                     'iosdelay': 20,
                     'href': hrf
                 },
