@@ -18,7 +18,7 @@
  */
 @font-face {
     font-family: '4cbengali';
-    src: url('fonts/4CBengali/4CBengali.eot');
+    src: url('fonts/4CBengali/4CBengali.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -27,14 +27,14 @@
     font-family: 'Noto Sans Bengali';
     font-style: normal;
     font-weight: 400;
-    src: url(fonts/notosansbengali/NotoSansBengali-Regular.eot);
+    src: url(fonts/notosansbengali/NotoSansBengali-Regular.woff) format('woff');
 }
 
 @font-face {
     font-family: 'Noto Sans Bengali';
     font-style: normal;
     font-weight: 700;
-    src: url(fonts/notosansbengali/NotoSansBengali-Bold.eot);
+    src: url(fonts/notosansbengali/NotoSansBengali-Bold.woff) format('woff');
 }
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {
