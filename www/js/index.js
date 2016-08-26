@@ -40,6 +40,9 @@ if($("ul.postlist").length){
         }
     });
 }
+function datecon(date2conv) {
+    return date2conv.replace('Monday','সোমবার').replace('Tuesday','মঙ্গলবার').replace('Wednesday','বুধবার').replace('Thursday','বৃহস্পতিবার').replace('Friday','শুক্রবার').replace('Saturday','শনিবার').replace('Sunday','রবিবার').replace('1','১').replace('2','২').replace('3','৩').replace('4','৪').replace('5','৫').replace('6','৬').replace('7','৭').replace('8','৮').replace('9','৯').replace('0','০').replace('January','জানুয়ারী').replace('February','ফেব্রুয়ারি').replace('March','মার্চ').replace('April','').replace('May','এপ্রিল').replace('June','জুন').replace('July','জুলাই').replace('August','অগাস্ট').replace('September','সেপ্টেম্বর').replace('October','অক্টোবর').replace('November','নভেম্বর').replace('December','ডিসেম্বর');
+}
 function loadlist(id,last){
     $.ajax({
         url: 'http://banglatimetv.com/jason_data.php',
@@ -51,7 +54,7 @@ function loadlist(id,last){
             reply = $.parseJSON(reply);
             if(reply[0]){
                 for(post in reply){
-                    $("ul.postlist").append('<li><a href="javascript:slide(\'post?id='+reply[post].id+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+reply[post].dte+'</span></div></a></li>');
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post?id='+reply[post].id+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
                     $("ul.postlist").attr('data-last',reply[post].id);
                     if($("ul.postlist").attr('data-first')=='0'){$("ul.postlist").attr('data-first',reply[post].id);}
                 }
