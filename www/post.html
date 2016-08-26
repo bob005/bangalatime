@@ -124,13 +124,7 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
-    function get(name){
-        if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-            return decodeURIComponent(name[1]);
-    }
     function back() {
-        alert(location.href);
-        alert(get('ref'));
         slide(get('ref'),'flip');
     }
     postid = get('id');

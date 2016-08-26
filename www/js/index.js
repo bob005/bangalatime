@@ -21,6 +21,10 @@ String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
+function get(name){
+    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+        return decodeURIComponent(name[1]);
+}
 var videoUrl = "http://edge-ind.inapcdn.in:1935/berry1/smarts2.stream_aac/playlist.m3u8";
 var slideout = new Slideout({
     'panel': document.getElementById('panel'),
@@ -58,7 +62,7 @@ function loadlist(id,last){
             reply = $.parseJSON(reply);
             if(reply[0]){
                 for(post in reply){
-                    $("ul.postlist").append('<li><a href="javascript:slide(\'post.html?id='+reply[post].id+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post.html?id='+reply[post].id+'&ref='+location.pathname.substr(location.pathname.lastIndexOf("/")+1)+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
                     $("ul.postlist").attr('data-last',reply[post].id);
                     if($("ul.postlist").attr('data-first')=='0'){$("ul.postlist").attr('data-first',reply[post].id);}
                 }
@@ -84,7 +88,7 @@ function loadrelated(id,category){
             reply = $.parseJSON(reply);
             if(reply[0]){
                 for(post in reply){
-                    $("ul.postlist").append('<li><a href="javascript:slide(\'post.html?id='+reply[post].id+'&ref='+location.pathname.substring(1)+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post.html?id='+reply[post].id+'&ref='+get('ref')+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
                 }
             }
         },
