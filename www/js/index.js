@@ -81,13 +81,13 @@ function slide(hrf,direction) {
         var theOptions = {
             "direction"        : direction, // 'left|right|up|down', default 'left' (which is like 'next')
             "duration"         :  500, // in milliseconds (ms), default 400
-            "slowdownfactor"   :    4, // overlap views (higher number is more) or no overlap (1). -1 doesn't slide at all. Default 4
-            "slidePixels"      :   20, // optional, works nice with slowdownfactor -1 to create a 'material design'-like effect. Default not set so it slides the entire page.
+            "slowdownfactor"   :   -1, // overlap views (higher number is more) or no overlap (1). -1 doesn't slide at all. Default 4
+            "slidePixels"      :  100, // optional, works nice with slowdownfactor -1 to create a 'material design'-like effect. Default not set so it slides the entire page.
             "iosdelay"         :  200, // ms to wait for the iOS webview to update before animation kicks in, default 60
             "androiddelay"     :  200, // same as above but for Android, default 70
             "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
-            "fixedPixelsTop"   :    0, // the number of pixels of your fixed header, default 0 (iOS and Android)
-            "fixedPixelsBottom":   60, // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
+            "fixedPixelsTop"   :   44, // the number of pixels of your fixed header, default 0 (iOS and Android)
+            "fixedPixelsBottom":    0, // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
             'href'             :  hrf
         };
         if (direction != 'flip') {
