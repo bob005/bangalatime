@@ -53,6 +53,9 @@
     -webkit-animation: rotating 2s linear infinite;
 }
 
+a {font-size: inherit; font-style: inherit; text-decoration: none; color: inherit}
+small {font-size: 65%; padding-left: 6px;}
+
 * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -127,7 +130,7 @@ ul.sidemenu li .icon {float: left; color: #0D5ABE; display: block; height: 33px;
 
 .slideout-panel .page {height: calc(100vh - 44px); box-sizing: border-box; overflow-y: auto; -webkit-overflow-scrolling: touch;}
 .slideout-panel header {background: #eb112a; color: white; padding: 6px; z-index: 10; display: block; box-sizing: border-box; width: 100%; height: 44px;}
-.slideout-panel header:after, .slideout-panel:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
+.slideout-panel header:after, .slideout-panel:after, .clearfix:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
 .slideout-panel header .toggle-button {background: transparent; border: none; outline: none; -webkit-appearance: none; font-size: 32px; line-height: 32px; display: block; width: 32px; height: 32px; padding: 0; margin: 0; overflow: hidden; color: inherit; float: left}
 .slideout-panel header .toggle-button i {-webkit-transition: all 0.5s ease-in-out; -webkit-transform: rotate3d(0,0,0,0deg); display: inline-block}
 .slideout-panel header .toggle-button i.flaticon-close {-webkit-transform: rotate3d(16,16,16,360deg);}
@@ -188,6 +191,49 @@ ul.postlist li .time {
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+article {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #eb112a;
+    box-sizing: border-box;
+}
+
+article img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+article h2, article h5 {
+    padding: 0 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+article div.post {
+    padding: 10px;
+    margin-bottom: 30px;
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+h2.color {color: #eb112a; padding: 10px; margin-top: 10px}
+
+.reverse {-webkit-transform: rotate(-180deg)}
+.left {float: left}
+.right {float: left}
+
+.topdog {
+    display: block;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 24px;
+    color: #197ede;
 }
 
 

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta http-equiv="cleartype" content="on">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/fonts/flat-icon-1/flaticon.css">
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/slideout.min.js"></script>
+
+    <title>BanglaTime</title>
+</head>
+
+<body>
+
+<nav id="menu">
+    <img src="img/logo-large.png" class="logo" alt="">
+    <ul class="sidemenu">
+        <li>
+            <a href="javascript:slide('index.html','flip');">
+                <span class="icon"></span>
+                <span style="padding-top: 3px;display: inline-block;">সাম্প্রতিক</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('kolkata.html','flip');">
+                <span class="icon"></span>
+                <span style="padding-top: 3px;display: inline-block;">কলকাতা</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('state.html','flip');">
+                <span class="icon"></span>
+                <span style="padding-top: 3px;display: inline-block;">রাজ্য</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('country.html','flip');">
+                <span class="icon"></span>
+                <span style="padding-top: 3px;display: inline-block;">দেশ</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('world.html','flip');">
+                <span class="icon"></span>
+                <span style="padding-top: 3px;display: inline-block;">বিশ্ব</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('sports.html','flip');">
+                <span class="icon"></span>
+                <span style="padding-top: 3px;display: inline-block;">খেলা</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('entertainment.html','flip');">
+                <span class="icon"></span>
+                <span>বিনোদন</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('lifestyle.html','flip');">
+                <span class="icon"></span>
+                <span>লাইফ স্টাইল</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('business.html','flip');">
+                <span class="icon"></span>
+                <span>ব্যবসা</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('gallery.html','flip');">
+                <span class="icon"></span>
+                <span>গ্যালারি</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('video.html','flip');">
+                <span class="icon"></span>
+                <span>ভিডিও</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:slide('live.html','flip');">
+                <span class="icon"></span>
+                <span>লাইভ টিভি</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<main id="panel">
+    <header>
+        <a href="javascript:slide('live.html','flip');"><i class="flaticon-play-button"></i> <span>লাইভ টিভি</span></a>
+        <button class="toggle-button"><i class="flaticon-menu-button"></i></button>
+        <img src="img/logo.png" alt="" >
+    </header>
+    <div class="page">
+        <section class="clearfix topdog">
+            <span class="right"></span><a href="jsvascript:back();"><i class="flaticon-next-page reverse left"></i> <small>ফিরে যান</small></a>
+        </section>
+        <section>
+            <article>
+            </article>
+            <h2 class="color">অন্যান্য খবর</h2>
+            <ul class="postlist related" data-first="0"></ul>
+        </section>
+    </div>
+</main>
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    function get(name){
+        if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+            return decodeURIComponent(name[1]);
+    }
+    function back() {
+        slide(get('ref'),'flip');
+    }
+    postid = get('id');
+    $.ajax({
+        url: 'http://banglatimetv.com/jason_data.php',
+        type: 'post',
+        datatype:'json',
+        crossDomain: true,
+        data: {type: 'post', id:postid},
+        success: function(reply){
+            reply = $.parseJSON(reply);
+            console.log(reply);
+            if(reply[0]){
+                for(post in reply){
+                    $("article").append('<h2>'+reply[post].title+'</h2><h5>'+reply[post].reportby+', প্রকাশিত : '+datecon(reply[post].dte)+'</h5><img src="http://banglatimetv.com/news/'+reply[post].img+'" alt=""><div class="post">'+reply[post].content+'</div>');
+                    loadrelated(postid,reply[post].id);
+                }
+            }
+        },
+        error: function(reply){
+            console.log(reply);
+        }
+    });
+    loadrelated('0','0');
+    app.initialize();
+</script>
+</body>
+
+</html>

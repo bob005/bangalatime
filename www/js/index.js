@@ -36,7 +36,7 @@ slideout.on('beforeclose', function () {
 slideout.on('beforeopen', function () {
     $('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
 });
-if($("ul.postlist").length){
+if($("ul.postlist:not(.related)").length){
     $('.page').scroll(function(e){
         if(($('.page').scrollTop() + $('.page').height()) > ($('.postlist').height() - 0) && scrollDetectEnable){
             scrollDetectEnable = false;
@@ -58,7 +58,7 @@ function loadlist(id,last){
             reply = $.parseJSON(reply);
             if(reply[0]){
                 for(post in reply){
-                    $("ul.postlist").append('<li><a href="javascript:slide(\'post?id='+reply[post].id+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post.html?id='+reply[post].id+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
                     $("ul.postlist").attr('data-last',reply[post].id);
                     if($("ul.postlist").attr('data-first')=='0'){$("ul.postlist").attr('data-first',reply[post].id);}
                 }
@@ -66,6 +66,26 @@ function loadlist(id,last){
             } else {
                 $('.loaderror').html('That\'s all folks!!');
                 $('.flaticon-refresh-button').addClass('flaticon-check-square').removeClass('flaticon-refresh-button').removeClass('rotating');
+            }
+        },
+        error: function(reply){
+            $('.loaderror').html(reply);
+        }
+    });
+}
+function loadrelated(id,category){
+    $.ajax({
+        url: 'http://banglatimetv.com/jason_data.php',
+        type: 'post',
+        datatype:'json',
+        crossDomain: true,
+        data: {type: 'related', id:id, category:category},
+        success: function(reply){
+            reply = $.parseJSON(reply);
+            if(reply[0]){
+                for(post in reply){
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post.html?id='+reply[post].id+'&ref='+location.pathname.substring(1)+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
+                }
             }
         },
         error: function(reply){
@@ -82,7 +102,7 @@ function slide(hrf,direction) {
             "direction"        : direction, // 'left|right|up|down', default 'left' (which is like 'next')
             "duration"         :  500, // in milliseconds (ms), default 400
             "slowdownfactor"   :   -1, // overlap views (higher number is more) or no overlap (1). -1 doesn't slide at all. Default 4
-            "slidePixels"      :  100, // optional, works nice with slowdownfactor -1 to create a 'material design'-like effect. Default not set so it slides the entire page.
+            //"slidePixels"      :  100, // optional, works nice with slowdownfactor -1 to create a 'material design'-like effect. Default not set so it slides the entire page.
             "iosdelay"         :  200, // ms to wait for the iOS webview to update before animation kicks in, default 60
             "androiddelay"     :  200, // same as above but for Android, default 70
             "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
