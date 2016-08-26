@@ -129,11 +129,13 @@
             return decodeURIComponent(name[1]);
     }
     function back() {
+        alert(location.href);
         alert(get('ref'));
         slide(get('ref'),'flip');
     }
     postid = get('id');
-    $.ajax({
+    $..
+    ajax({
         url: 'http://banglatimetv.com/jason_data.php',
         type: 'post',
         datatype:'json',

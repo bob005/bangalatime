@@ -19,7 +19,6 @@
 @font-face {
     font-family: '4cbengali';
     src: url('fonts/4CBengali/4CBengali.eot');
-    /*src: local('â˜º'), url('fonts/4CBengali/4CBengali.woff') format('woff'), url('fonts/4CBengali/4CBengali.ttf') format('truetype'), url('fonts/4CBengali/4CBengali.svg') format('svg');*/
     font-weight: normal;
     font-style: normal;
 }
@@ -29,7 +28,6 @@
     font-style: normal;
     font-weight: 400;
     src: url(fonts/notosansbengali/NotoSansBengali-Regular.eot);
-    /*src: url(fonts/notosansbengali/NotoSansBengali-Regular.eot?#iefix) format('embedded-opentype'), url(fonts/notosansbengali/NotoSansBengali-Regular.woff2) format('woff2'), url(fonts/notosansbengali/NotoSansBengali-Regular.woff) format('woff'), url(fonts/notosansbengali/NotoSansBengali-Regular.ttf) format('truetype');*/
 }
 
 @font-face {
@@ -37,7 +35,6 @@
     font-style: normal;
     font-weight: 700;
     src: url(fonts/notosansbengali/NotoSansBengali-Bold.eot);
-    /*src: url(fonts/notosansbengali/NotoSansBengali-Bold.eot?#iefix) format('embedded-opentype'), url(fonts/notosansbengali/NotoSansBengali-Bold.woff2) format('woff2'), url(fonts/notosansbengali/NotoSansBengali-Bold.woff) format('woff'), url(fonts/notosansbengali/NotoSansBengali-Bold.ttf) format('truetype');*/
 }
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {
