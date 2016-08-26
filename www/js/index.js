@@ -17,6 +17,10 @@
  * under the License.
  */
 scrollDetectEnable = true;
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
 var videoUrl = "http://edge-ind.inapcdn.in:1935/berry1/smarts2.stream_aac/playlist.m3u8";
 var slideout = new Slideout({
     'panel': document.getElementById('panel'),
@@ -41,7 +45,7 @@ if($("ul.postlist").length){
     });
 }
 function datecon(date2conv) {
-    return date2conv.replace('Monday','সোমবার').replace('Tuesday','মঙ্গলবার').replace('Wednesday','বুধবার').replace('Thursday','বৃহস্পতিবার').replace('Friday','শুক্রবার').replace('Saturday','শনিবার').replace('Sunday','রবিবার').replace('1','১').replace('2','২').replace('3','৩').replace('4','৪').replace('5','৫').replace('6','৬').replace('7','৭').replace('8','৮').replace('9','৯').replace('0','০').replace('January','জানুয়ারী').replace('February','ফেব্রুয়ারি').replace('March','মার্চ').replace('April','').replace('May','এপ্রিল').replace('June','জুন').replace('July','জুলাই').replace('August','অগাস্ট').replace('September','সেপ্টেম্বর').replace('October','অক্টোবর').replace('November','নভেম্বর').replace('December','ডিসেম্বর');
+    return date2conv.replaceAll('Monday','সোমবার').replaceAll('Tuesday','মঙ্গলবার').replaceAll('Wednesday','বুধবার').replaceAll('Thursday','বৃহস্পতিবার').replaceAll('Friday','শুক্রবার').replaceAll('Saturday','শনিবার').replaceAll('Sunday','রবিবার').replaceAll('1','১').replaceAll('2','২').replaceAll('3','৩').replaceAll('4','৪').replaceAll('5','৫').replaceAll('6','৬').replaceAll('7','৭').replaceAll('8','৮').replaceAll('9','৯').replaceAll('0','০').replaceAll('January','জানুয়ারী').replaceAll('February','ফেব্রুয়ারি').replaceAll('March','মার্চ').replaceAll('April','').replaceAll('May','এপ্রিল').replaceAll('June','জুন').replaceAll('July','জুলাই').replaceAll('August','অগাস্ট').replaceAll('September','সেপ্টেম্বর').replaceAll('October','অক্টোবর').replaceAll('November','নভেম্বর').replaceAll('December','ডিসেম্বর');
 }
 function loadlist(id,last){
     $.ajax({
