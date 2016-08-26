@@ -27,73 +27,73 @@
     <img src="img/logo-large.png" class="logo" alt="">
     <ul class="sidemenu">
         <li>
-            <a href="javascript:slide('index.html');">
+            <a href="javascript:slide('index.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">সাম্প্রতিক</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('kolkata.html');">
+            <a href="javascript:slide('kolkata.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">কলকাতা</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('state.html');">
+            <a href="javascript:slide('state.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">রাজ্য</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('country.html');">
+            <a href="javascript:slide('country.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">দেশ</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('world.html');">
+            <a href="javascript:slide('world.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">বিশ্ব</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('sports.html');">
+            <a href="javascript:slide('sports.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">খেলা</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('entertainment.html');">
+            <a href="javascript:slide('entertainment.html','left');">
                 <span class="icon"></span>
                 <span>বিনোদন</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('lifestyle.html');">
+            <a href="javascript:slideout.close();">
                 <span class="icon"></span>
                 <span>লাইফ স্টাইল</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('business.html');">
+            <a href="javascript:slide('business.html','right');">
                 <span class="icon"></span>
                 <span>ব্যবসা</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('gallery.html');">
+            <a href="javascript:slide('gallery.html','right');">
                 <span class="icon"></span>
                 <span>গ্যালারি</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('video.html');">
+            <a href="javascript:slide('video.html','right');">
                 <span class="icon"></span>
                 <span>ভিডিও</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('live.html');">
+            <a href="javascript:slide('live.html','flip');">
                 <span class="icon"></span>
                 <span>লাইভ টিভি</span>
             </a>
@@ -103,7 +103,7 @@
 
 <main id="panel">
     <header>
-        <a href="javascript:slide('live.html');"><i class="flaticon-play-button"></i> <span>লাইভ টিভি</span></a>
+        <a href="javascript:slide('live.html','flip');"><i class="flaticon-play-button"></i> <span>লাইভ টিভি</span></a>
         <button class="toggle-button"><i class="flaticon-menu-button"></i></button>
         <img src="img/logo.png" alt="" >
     </header>
@@ -124,26 +124,6 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
-    pageDirectionStorage = {
-        'index':'left',
-        'kolkata':'left',
-        'state':'left',
-        'country':'left',
-        'world':'left',
-        'sports':'left',
-        'entertainment':'left',
-        'lifestyle':'none',
-        'business':'right',
-        'video':'right',
-        'live':'up',
-        'post':'flip'
-    };
-    $('.page').scroll(function(e){
-        if(($('.page').scrollTop() + $('.page').height()) > ($('.postlist').height() - 0) && scrollDetectEnable){
-            scrollDetectEnable = false;
-            loadlist('8',$('.postlist').attr('data-last'));
-        }
-    });
     loadlist('8','0');
     app.initialize();
 </script>

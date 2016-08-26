@@ -32,6 +32,14 @@ slideout.on('beforeclose', function () {
 slideout.on('beforeopen', function () {
     $('.flaticon-menu-button').removeClass('flaticon-menu-button').addClass('flaticon-close');
 });
+if($("ul.postlist").length){
+    $('.page').scroll(function(e){
+        if(($('.page').scrollTop() + $('.page').height()) > ($('.postlist').height() - 0) && scrollDetectEnable){
+            scrollDetectEnable = false;
+            loadlist('0',$('.postlist').attr('data-last'));
+        }
+    });
+}
 function loadlist(id,last){
     $.ajax({
         url: 'http://banglatimetv.com/jason_data.php',
@@ -43,7 +51,7 @@ function loadlist(id,last){
             reply = $.parseJSON(reply);
             if(reply[0]){
                 for(post in reply){
-                    $("ul.postlist").append('<li><a href="javascript:slide(\'post?id='+reply[post].id+'\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+reply[post].dte+'</span></div></a></li>');
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post?id='+reply[post].id+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+reply[post].dte+'</span></div></a></li>');
                     $("ul.postlist").attr('data-last',reply[post].id);
                     if($("ul.postlist").attr('data-first')=='0'){$("ul.postlist").attr('data-first',reply[post].id);}
                 }
@@ -58,19 +66,11 @@ function loadlist(id,last){
         }
     });
 }
-function slide(hrf) {
+function slide(hrf,direction) {
     $('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
     slideout.close();
     setTimeout(function()
     {
-        direction = 'none';
-        for (k in pageDirectionStorage) {
-            if (hrf.search(k)<0){
-                direction = pageDirectionStorage['k'];
-            } else {
-                direction = 'down';
-            }
-        }
         var theOptions = {
             'direction': direction,
             'duration': 500,
@@ -79,14 +79,11 @@ function slide(hrf) {
             'fixedPixelsTop': 44, // optional, the number of pixels of your fixed header, default 0 (iOS and Android)
             'fixedPixelsBottom': 0  // optional, the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
         };
-        if (direction != 'none' && direction != 'flip') {
+        if (direction != 'flip') {
             window.plugins.nativepagetransitions.slide(
                 theOptions,
                 function () {
                     console.log('------------------- slide transition finished');
-                },
-                function (msg) {
-                    alert('error: ' + msg);
                 });
         } else if (direction == 'flip') {
             window.plugins.nativepagetransitions.flip({
