@@ -217,20 +217,22 @@ article div.post {
     margin-bottom: 30px;
     text-align: justify;
     box-sizing: border-box;
+    font-size: 14px;
 }
 
 h2.color {color: #eb112a; padding: 10px; margin-top: 10px}
 
 .reverse {-webkit-transform: rotate(-180deg)}
 .left {float: left}
-.right {float: left}
+.right {float: right}
 
 .topdog {
     display: block;
     box-sizing: border-box;
     padding: 10px;
     font-size: 24px;
-    color: #197ede;
+    background-color: #197ede;
+    color: white;
 }
 
 

@@ -93,7 +93,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:slide('live.html','flip');">
+            <a href="javascript:golive();">
                 <span class="icon"></span>
                 <span>লাইভ টিভি</span>
             </a>
@@ -103,13 +103,13 @@
 
 <main id="panel">
     <header>
-        <a href="javascript:slide('live.html','flip');"><i class="flaticon-play-button"></i> <span>লাইভ টিভি</span></a>
+        <a href="javascript:golive();"><i class="flaticon-play-button"></i> <span>লাইভ টিভি</span></a>
         <button class="toggle-button"><i class="flaticon-menu-button"></i></button>
         <img src="img/logo.png" alt="" >
     </header>
     <div class="page">
         <section class="clearfix topdog">
-            <span class="right"></span><a href="javascript:back();"><i class="flaticon-next-page reverse left"></i> <small>ফিরে যান</small></a>
+            <span id="bc" class="right"></span><a href="javascript:back();"><i class="flaticon-next-page reverse left"></i> <small>ফিরে যান</small></a>
         </section>
         <section>
             <article>
@@ -136,11 +136,41 @@
         data: {type: 'post', id:postid},
         success: function(reply){
             reply = $.parseJSON(reply);
-            console.log(reply);
             if(reply[0]){
                 for(post in reply){
                     $("article").append('<h2>'+reply[post].title+'</h2><h5>'+reply[post].reportby+', প্রকাশিত : '+datecon(reply[post].dte)+'</h5><img src="http://banglatimetv.com/news/'+reply[post].img+'" alt=""><div class="post">'+reply[post].content+'</div>');
                     loadrelated(postid,reply[post].id);
+                    var catname;
+                    switch (reply[post].id){
+                        case '2':
+                            catname = "কলকাতা";
+                            break;
+                        case '3':
+                            catname = "রাজ্য";
+                            break;
+                        case '4':
+                            catname = "দেশ";
+                            break;
+                        case '5':
+                            catname = "বিশ্ব";
+                            break;
+                        case '6':
+                            catname = "খেলা";
+                            break;
+                        case '7':
+                            catname = "বিনোদন";
+                            break;
+                        case '8':
+                            catname = "লাইফ স্টাইল";
+                            break;
+                        case '12':
+                            catname = "ব্যবসা";
+                            break;
+                        default:
+                            catname = "সাম্প্রতিক";
+                            break;
+                    }
+                    $('#bc').html("<span class='flaticon-home'></span> &Gt; <small>"+ catname +"</small>");
                 }
             }
         },
@@ -148,7 +178,6 @@
             console.log(reply);
         }
     });
-    loadrelated('0','0');
     app.initialize();
 </script>
 </body>
