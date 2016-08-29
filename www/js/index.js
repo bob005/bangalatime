@@ -44,7 +44,7 @@ if($("ul.postlist:not(.related)").length){
     $('.page').scroll(function(e){
         if(($('.page').scrollTop() + $('.page').height()) > ($('.postlist').height() - 0) && scrollDetectEnable){
             scrollDetectEnable = false;
-            loadlist('0',$('.postlist').attr('data-last'));
+            loadlist($('.page').attr('data-category'),$('.postlist').attr('data-last'));
         }
     });
 }
