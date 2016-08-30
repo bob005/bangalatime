@@ -36,7 +36,8 @@ if($('.page').attr('data-category')=='9'){
         'padding': 256,
         'tolerance': 256,
         'duration': 500,
-        'fx': 'ease'
+        'fx': 'ease',
+        'grabWidth': 70
     });
 }else{
     var slideout = new Slideout({
@@ -45,7 +46,8 @@ if($('.page').attr('data-category')=='9'){
         'padding': 256,
         'tolerance': 90,
         'duration': 500,
-        'fx': 'ease'
+        'fx': 'ease',
+        'grabWidth': 70
     });
 }
 slideout.on('beforeclose', function () {
