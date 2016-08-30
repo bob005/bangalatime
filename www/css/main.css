@@ -274,4 +274,4 @@ h2.color {color: #eb112a; padding: 10px; margin-top: 10px}
     color: white;
 }
 
-
+.lg-download, .lg-actions, .lg-fullscreen {display: none!important;}
