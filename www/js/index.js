@@ -65,13 +65,7 @@ function loadlist(id,last){
             reply = $.parseJSON(reply);
             if(reply[0]){
                 for(post in reply){
-                    if(id=='9'){
-                        $("ul.postlist").append('<li><a href="javascript:slide(\'gallery-post.html?id='+reply[post].id+'&ref='+location.pathname.substr(location.pathname.lastIndexOf("/")+1)+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
-                    }else if(id=='10'){
-
-                    }else{
-                        $("ul.postlist").append('<li><a href="javascript:slide(\'post.html?id='+reply[post].id+'&ref='+location.pathname.substr(location.pathname.lastIndexOf("/")+1)+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
-                    }
+                    $("ul.postlist").append('<li><a href="javascript:slide(\'post.html?id='+reply[post].id+'&ref='+location.pathname.substr(location.pathname.lastIndexOf("/")+1)+'\',\'flip\')"><img src="http://banglatimetv.com/news/'+reply[post].img+'"><div class="overlay"><div class="title">'+reply[post].title+'</div><span class="time">'+datecon(reply[post].dte)+'</span></div></a></li>');
                     $("ul.postlist").attr('data-last',reply[post].id);
                     if($("ul.postlist").attr('data-first')=='0'){$("ul.postlist").attr('data-first',reply[post].id);}
                 }
@@ -82,6 +76,42 @@ function loadlist(id,last){
             }
         },
         error: function(reply){
+            $('.loaderror').html(reply);
+        }
+    });
+}
+function loadgal(last){
+    $.ajax({
+        url: 'http://banglatimetv.com/album2.php',
+        type: 'post',
+        datatype:'json',
+        crossDomain: true,
+        data: {type: 'gallery', range:10, first: $(".page").attr('data-first'), last:last},
+        success: function(reply){
+            console.log(reply);
+            if(reply[0]){
+                for(post in reply){
+                    pele = '<li><div class="cover"><img src="http://banglatimetv.com/album/'+reply[post].img+'" alt=""><div class="overlay"><h3>'+reply[post].title+'</h3></div></div><div class="lightgallery" data-id="'+reply[post].id+'">';
+
+                    for(imgs in reply[post].images){
+                        pele += '<a href="http://banglatimetv.com/album/images/'+reply[post].images[imgs]+'"><img src="http://banglatimetv.com/album/images/'+reply[post].images[imgs]+'"/></a>';
+                    }
+
+                    pele += '</div></li>';
+
+                    $("ul.appsl-gallery").append(pele);
+                    $(".page").attr('data-last',reply[post].id);
+                    if($(".page").attr('data-first')=='0'){$(".page").attr('data-first',reply[post].id);}
+                    $('.lightgallery[data-id='+reply[post].id+']').lightGallery();
+                }
+                scrollDetectEnable = true;
+            } else {
+                $('.loaderror').html('That\'s all folks!!');
+                $('.flaticon-refresh-button').addClass('flaticon-check-square').removeClass('flaticon-refresh-button').removeClass('rotating');
+            }
+        },
+        error: function(reply){
+            console.log(reply);
             $('.loaderror').html(reply);
         }
     });
