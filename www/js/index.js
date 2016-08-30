@@ -29,14 +29,25 @@ var videoUrl = "http://edge-ind.inapcdn.in:1935/berry1/smarts2.stream_aac/playli
 function golive(){
     window.plugins.streamingMedia.playVideo(videoUrl);
 }
-var slideout = new Slideout({
-    'panel': document.getElementById('panel'),
-    'menu': document.getElementById('menu'),
-    'padding': 256,
-    'tolerance': 90,
-    'duration': 500,
-    'fx': 'ease-in-out'
-});
+if($('.page').attr('data-category')=='9'){
+    var slideout = new Slideout({
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('menu'),
+        'padding': 256,
+        'tolerance': 256,
+        'duration': 500,
+        'fx': 'ease'
+    });
+}else{
+    var slideout = new Slideout({
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('menu'),
+        'padding': 256,
+        'tolerance': 90,
+        'duration': 500,
+        'fx': 'ease'
+    });
+}
 slideout.on('beforeclose', function () {
     $('.flaticon-close').removeClass('flaticon-close').addClass('flaticon-menu-button');
 });
