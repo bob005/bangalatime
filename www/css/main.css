@@ -138,13 +138,13 @@ ul.sidemenu li .icon {float: left; color: #0D5ABE; display: block; height: 33px;
 
 
 
-ul.postlist, ul.appsl-gallery {
+ul.postlist, ul.appsl-gallery, .appsl-vid-gallery {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-ul.postlist li, ul.appsl-gallery li {
+ul.postlist li, ul.appsl-gallery li, .appsl-vid-gallery a {
     display: block; padding: 0; border-bottom: 1px solid #eb112a; border-top: 1px solid #eb112a; position: relative; height: 181px; overflow: hidden;
 }
 
@@ -153,7 +153,7 @@ ul.appsl-gallery li .cover {
     display: block; padding: 0; height: 180px; width: 100%; overflow: hidden;
 }
 
-ul.postlist li img, ul.appsl-gallery li .cover img {
+ul.postlist li img, ul.appsl-gallery li .cover img, .appsl-vid-gallery img {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -166,7 +166,7 @@ ul.appsl-gallery li .cover img {
     max-width: 140%;
 }
 
-ul.postlist li .overlay, ul.appsl-gallery li .cover .overlay {
+ul.postlist li .overlay, ul.appsl-gallery li .cover .overlay, .appsl-vid-gallery .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -182,7 +182,7 @@ ul.appsl-gallery li .cover .overlay {
     background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
 }
 
-ul.appsl-gallery li .cover .overlay h3 {
+ul.appsl-gallery li .cover .overlay h3, .appsl-vid-gallery h3 {
     color: white; padding: 5px;
 }
 

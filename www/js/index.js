@@ -37,7 +37,8 @@ if($('.page').attr('data-category')=='9'){
         'tolerance': 256,
         'duration': 500,
         'fx': 'ease',
-        'grabWidth': 70
+        'grabWidth': 70,
+        'touch': false
     });
 }else{
     var slideout = new Slideout({
@@ -47,7 +48,8 @@ if($('.page').attr('data-category')=='9'){
         'tolerance': 90,
         'duration': 500,
         'fx': 'ease',
-        'grabWidth': 70
+        'grabWidth': 70,
+        'touch': false
     });
 }
 slideout.on('beforeclose', function () {
@@ -89,7 +91,8 @@ function loadlist(id,last){
             }
         },
         error: function(reply){
-            $('.loaderror').html(reply);
+            $('.loaderror').html("Unable to connect to server. Please check your internet connection. We will retry in 15 seconds.");
+            setTimeout(function() { loadlist(id,last); }, 15000);
         }
     });
 }
@@ -101,7 +104,6 @@ function loadgal(last){
         crossDomain: true,
         data: {type: 'gallery', range:10, first: $(".page").attr('data-first'), last:last},
         success: function(reply){
-            console.log(reply);
             if(reply[0]){
                 for(post in reply){
                     pele = '<li><div class="cover"><img src="http://banglatimetv.com/album/'+reply[post].img+'" alt=""><div class="overlay"><h3>'+reply[post].title+'</h3></div></div><div class="lightgallery" data-id="'+reply[post].id+'">';
@@ -124,8 +126,46 @@ function loadgal(last){
             }
         },
         error: function(reply){
-            console.log(reply);
-            $('.loaderror').html(reply);
+            $('.loaderror').html("Unable to connect to server. Please check your internet connection. We will retry in 15 seconds.");
+            setTimeout(function() { loadgal(last); }, 15000);
+        }
+    });
+}
+function loadvidgal(last){
+    lgal = $('.appsl-vid-gallery');
+    $.ajax({
+        url: 'http://banglatimetv.com/album2.php',
+        type: 'post',
+        datatype:'json',
+        crossDomain: true,
+        data: {type: 'video', range:10, first: $(".page").attr('data-first'), last:last},
+        success: function(reply){
+            if(reply[0]){
+                for(post in reply){
+                    $(".appsl-vid-gallery").append('<a href="https://www.youtube.com/watch?v='+reply[post].videoid+'" data-poster="http://img.youtube.com/vi/'+reply[post].videoid+'/hqdefault.jpg" ><img src="http://img.youtube.com/vi/'+reply[post].videoid+'/hqdefault.jpg" /></a>');
+                    $(".page").attr('data-last',reply[post].id);
+                    if($(".page").attr('data-first')=='0'){$(".page").attr('data-first',reply[post].id);}
+                }
+                try {
+                    lgal.data('lightGallery').destroy(true);
+                }
+                catch(err) {
+                    console.log(err);
+                }
+                lgal.lightGallery({
+                    youtubePlayerParams: { modestbranding: 0, showinfo: 0, controls: 0 },
+                    loadYoutubeThumbnail: false,
+                    youtubeThumbSize: 'default'
+                });
+                scrollDetectEnable = true;
+            } else {
+                $('.loaderror').html('That\'s all folks!!');
+                $('.flaticon-refresh-button').addClass('flaticon-check-square').removeClass('flaticon-refresh-button').removeClass('rotating');
+            }
+        },
+        error: function(reply){
+            $('.loaderror').html("Unable to connect to server. Please check your internet connection. We will retry in 15 seconds.");
+            setTimeout(function() { loadvidgal(last); }, 15000);
         }
     });
 }
@@ -145,7 +185,8 @@ function loadrelated(id,category){
             }
         },
         error: function(reply){
-            $('.loaderror').html(reply);
+            $('.loaderror').html("Unable to connect to server. Please check your internet connection. We will retry in 15 seconds.");
+            setTimeout(function() { loadrelated(id,category); }, 15000);
         }
     });
 }
@@ -154,37 +195,32 @@ function slide(hrf,direction) {
     slideout.close();
     setTimeout(function()
     {
-        var theOptions = {
-            "direction"        : direction, // 'left|right|up|down', default 'left' (which is like 'next')
-            "duration"         :  500, // in milliseconds (ms), default 400
-            "slowdownfactor"   :    1, // overlap views (higher number is more) or no overlap (1). -1 doesn't slide at all. Default 4
-            //"slidePixels"      :  100, // optional, works nice with slowdownfactor -1 to create a 'material design'-like effect. Default not set so it slides the entire page.
-            "iosdelay"         :  200, // ms to wait for the iOS webview to update before animation kicks in, default 60
-            "androiddelay"     :  200, // same as above but for Android, default 70
-            "winphonedelay"    :  200, // same as above but for Windows Phone, default 200,
-            "fixedPixelsTop"   :   44, // the number of pixels of your fixed header, default 0 (iOS and Android)
-            "fixedPixelsBottom":    0, // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
-            'href'             :  hrf
-        };
         if (direction != 'flip') {
             window.plugins.nativepagetransitions.slide(
-                theOptions,
+                {
+                    "direction"        : direction, // 'left|right|up|down', default 'left' (which is like 'next')
+                    "duration"         :  400, // in milliseconds (ms), default 400
+                    "slowdownfactor"   :    1, // overlap views (higher number is more) or no overlap (1). -1 doesn't slide at all. Default 4
+                    //"slidePixels"      :  100, // optional, works nice with slowdownfactor -1 to create a 'material design'-like effect. Default not set so it slides the entire page.
+                    "iosdelay"         :  500, // ms to wait for the iOS webview to update before animation kicks in, default 60
+                    "androiddelay"     :  500, // same as above but for Android, default 70
+                    "fixedPixelsTop"   :   44, // the number of pixels of your fixed header, default 0 (iOS and Android)
+                    "fixedPixelsBottom":    0, // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
+                    'href'             :  hrf
+                },
                 function () {
-                    console.log('------------------- slide transition finished');
+                    //console.log('------------------- slide transition finished');
                 });
         } else if (direction == 'flip') {
             window.plugins.nativepagetransitions.flip({
                     "direction"      : "right", // 'left|right|up|down', default 'right' (Android currently only supports left and right)
-                    "duration"       :  500, // in milliseconds (ms), default 400
-                    "iosdelay"       :  100, // ms to wait for the iOS webview to update before animation kicks in, default 60
-                    "androiddelay"   :  100, // same as above but for Android, default 70
-                    "winphonedelay"  :  100, // same as above but for Windows Phone, default 200
+                    "duration"       :  400, // in milliseconds (ms), default 400
+                    "iosdelay"       :  500, // ms to wait for the iOS webview to update before animation kicks in, default 60
+                    "androiddelay"   :  500, // same as above but for Android, default 70
                     'href'           :  hrf
                 },
                 function () {
-                    console.log('------------------- flip transition finished');
-                },
-                function (msg) {
+                    //console.log('------------------- flip transition finished');
                 });
         }
     }, 800);
