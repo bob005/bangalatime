@@ -153,9 +153,14 @@ function loadvidgal(last){
                     console.log(err);
                 }
                 lgal.lightGallery({
-                    youtubePlayerParams: { modestbranding: 0, showinfo: 0, controls: 0 },
+                    youtubePlayerParams: { modestbranding: 0, showinfo: 0, controls: 1 },
                     loadYoutubeThumbnail: false,
-                    youtubeThumbSize: 'default'
+                    youtubeThumbSize: 'default',
+                    videoAutoplay : true
+                }).on('onAfterOpen.lg',function(event, index, fromTouch, fromThumb){
+                    window.plugins.orientationLock.unlock();
+                }).on('onBeforeClose.lg',function(event, index, fromTouch, fromThumb){
+                    window.plugins.orientationLock.lock("portrait");
                 });
                 scrollDetectEnable = true;
             } else {
