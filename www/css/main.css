@@ -145,7 +145,7 @@ ul.postlist, ul.appsl-gallery, .appsl-vid-gallery {
 }
 
 ul.postlist li, ul.appsl-gallery li, .appsl-vid-gallery a {
-    display: block; padding: 0; border-bottom: 1px solid #eb112a; border-top: 1px solid #eb112a; position: relative; height: 181px; overflow: hidden;
+    display: block; padding: 0; border-bottom: 1px solid #ecd133; border-top: 1px solid #ecd133; position: relative; height: 181px; overflow: hidden; margin-bottom: -1px;
 }
 
 ul.appsl-gallery li {height: auto}
@@ -192,7 +192,7 @@ ul.appsl-gallery li .lightgallery {
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     height: 80px;
-    border-top: 1px solid #eb112a;
+    border-top: 1px solid #ecd133;
 }
 ul.appsl-gallery li .lightgallery a {
     display: inline-block;
@@ -275,3 +275,12 @@ h2.color {color: #eb112a; padding: 10px; margin-top: 10px}
 }
 
 .lg-download, .lg-actions, .lg-fullscreen {display: none!important;}
+
+.pageTitle {
+    padding: 10px 0 6px 0;
+    color: white;
+    background: #197ede;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+}
