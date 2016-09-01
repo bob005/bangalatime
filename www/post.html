@@ -141,7 +141,7 @@
             reply = $.parseJSON(reply);
             if(reply[0]){
                 for(post in reply){
-                    $("article").append('<h2>'+reply[post].title+'</h2><h5>'+reply[post].reportby+', প্রকাশিত : '+datecon(reply[post].dte)+'</h5><img src="http://banglatimetv.com/news/'+reply[post].img+'" alt=""><div class="post">'+reply[post].content+'</div>');
+                    $("article").html('<h2>'+reply[post].title+'</h2><h5>'+reply[post].reportby+', প্রকাশিত : '+datecon(reply[post].dte)+'</h5><img src="http://banglatimetv.com/news/'+reply[post].img+'" alt=""><div class="post">'+reply[post].content+'</div>');
                     loadrelated(postid,reply[post].id);
                     var catname;
                     switch (reply[post].id){
