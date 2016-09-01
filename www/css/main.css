@@ -308,7 +308,7 @@ ul.iconlist li {
     border-right-color: #0e467c;
     border-bottom-color: #0e467c;
 }
-ul.iconlist li:nth-child(even) {
+ul.iconlist li:nth-child(4n-1), ul.iconlist li:nth-child(4n-2) {
     background-color: #eb112a;
     border-left-color: #ff3a41;
     border-top-color: #ff3a41;
