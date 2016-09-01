@@ -307,14 +307,16 @@ ul.iconlist li {
     border-top-color: #42a0ff;
     border-right-color: #0e467c;
     border-bottom-color: #0e467c;
+    color: white;
 }
 ul.iconlist li:nth-child(4n-1), ul.iconlist li:nth-child(4n-2) {
-    background-color: #eb112a;
-    border-left-color: #ff3a41;
-    border-top-color: #ff3a41;
-    border-right-color: #9c0c1c;
-    border-bottom-color: #9c0c1c;
+    background-color: #ffd700;
+    border-left-color: #fffb81;
+    border-top-color: #fffb81;
+    border-right-color: #a48b00;
+    border-bottom-color: #a48b00;
+    color: black;
 }
 ul.iconlist a {box-sizing: border-box; display: block; height: 100%; width: 100%; overflow: hidden; padding: 5px}
-ul.iconlist h4 {color: white; text-align: center; margin: 0; padding: 0; width: 100%; position: absolute; bottom: 0; left: 0; box-sizing: border-box; font-size: 20px; font-weight: 400;}
+ul.iconlist h4 {text-align: center; margin: 0; padding: 0; width: 100%; position: absolute; bottom: 0; left: 0; box-sizing: border-box; font-size: 20px; font-weight: 400;}
 ul.iconlist img {display: block; height: calc(100% - 24px); width: auto; margin: 0 auto}
