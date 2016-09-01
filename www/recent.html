@@ -27,37 +27,37 @@
     <img src="img/logo-large.png" class="logo" alt="">
     <ul class="sidemenu">
         <li>
-            <a href="javascript:slide('recent.html','right');">
+            <a href="javascript:slideout.close();">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">সাম্প্রতিক</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('kolkata.html','right');">
+            <a href="javascript:slide('kolkata.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">কলকাতা</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('state.html','right');">
+            <a href="javascript:slide('state.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">রাজ্য</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('country.html','right');">
+            <a href="javascript:slide('country.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">দেশ</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slide('world.html','right');">
+            <a href="javascript:slide('world.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">বিশ্ব</span>
             </a>
         </li>
         <li>
-            <a href="javascript:slideout.close();">
+            <a href="javascript:slide('sports.html','left');">
                 <span class="icon"></span>
                 <span style="padding-top: 3px;display: inline-block;">খেলা</span>
             </a>
@@ -107,8 +107,8 @@
         <button class="toggle-button"><i class="flaticon-menu-button"></i></button>
         <img src="img/logo.png" alt="" >
     </header>
-    <div class="page" data-category="6">
-        <h2 class="pageTitle">খেলা</h2>
+    <div class="page" data-category="0">
+        <h2 class="pageTitle">সাম্প্রতিক</h2>
         <section>
             <ul class="postlist" data-first="0"></ul>
             <div style="padding: 10px; text-align: center; font-size: 24px; line-height: 24px; height: 44px; width: 44px; margin: 0 auto; box-sizing: border-box">
@@ -125,7 +125,7 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
-    loadlist('6','0');
+    loadlist('0','0');
     app.initialize();
 </script>
 </body>
