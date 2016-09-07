@@ -18,7 +18,6 @@
   <plugin name="cordova-plugin-device-motion" source="npm"/>
   <plugin name="cordova-plugin-device-orientation" source="npm"/>
   <plugin name="cordova-plugin-inappbrowser" source="npm"/>
-  <plugin name="cordova-plugin-media" source="npm"/>
   <plugin name="cordova-plugin-splashscreen" source="npm"/>
   <plugin name="cordova-plugin-statusbar" source="npm"/>
   <plugin name="cordova-plugin-whitelist" source="npm"/>

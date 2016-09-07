@@ -273,7 +273,7 @@ var app = {
         push.on('registration', function (data) {
             $.ajax({
                 type: "POST",
-                url: 'http://www.sayantanbakshi.in/gcm/action.php',
+                url: 'http://banglatimetv.com/action.php',
                 data: {device: data.registrationId, action: '1'},
                 success: function (sdata) {
 
