@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.banglatimetv.app" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.banglatimetv.app" version="1.0.1">
   <gap:config-file platform="android" parent="/manifest">
     <supports-screens
             android:xlargeScreens="true"
@@ -32,7 +32,7 @@
   <plugin spec="https://github.com/phonegap/phonegap-mobile-accessibility.git" source="git" />
   <plugin spec="https://github.com/cogitor/PhoneGap-OrientationLock.git" source="git" />
   <plugin name="phonegap-plugin-push" spec="1.6.4">
-    <param name="SENDER_ID" value="335673861035" />
+    <param name="SENDER_ID" value="714249016135" />
   </plugin>
   <plugin spec="https://github.com/nchutchind/cordova-plugin-streaming-media.git" source="git" />
   <icon src="icon.png"/>

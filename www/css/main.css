@@ -189,6 +189,7 @@ ul.appsl-gallery li .cover .overlay h3, .appsl-vid-gallery h3 {
 ul.appsl-gallery li .lightgallery {
     display: block;
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     height: 80px;

@@ -106,7 +106,7 @@ function loadgal(last){
         success: function(reply){
             if(reply[0]){
                 for(post in reply){
-                    pele = '<li><div class="cover"><img src="http://banglatimetv.com/album/'+reply[post].img+'" alt=""><div class="overlay"><h3>'+reply[post].title+'</h3></div></div><div class="lightgallery" data-id="'+reply[post].id+'">';
+                    pele = '<li><div class="cover" onclick="$(\'.lightgallery[data-id='+reply[post].id+'] > a:first-child\').click()"><img src="http://banglatimetv.com/album/'+reply[post].img+'" alt=""><div class="overlay"><h3>'+reply[post].title+'</h3></div></div><div class="lightgallery" data-id="'+reply[post].id+'">';
 
                     for(imgs in reply[post].images){
                         pele += '<a href="http://banglatimetv.com/album/images/'+reply[post].images[imgs]+'"><img src="http://banglatimetv.com/album/images/'+reply[post].images[imgs]+'"/></a>';
@@ -267,7 +267,7 @@ var app = {
             window.MobileAccessibility.usePreferredTextZoom(false);
         }
         var push = PushNotification.init({
-            "android": {"senderID": "335673861035"},
+            "android": {"senderID": "714249016135"},
             "ios": {"alert": "true", "badge": "true", "sound": "true"}
         });
         push.on('registration', function (data) {
