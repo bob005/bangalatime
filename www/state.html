@@ -17,6 +17,7 @@
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/slideout.min.js"></script>
+    <script type="text/javascript" src="js/quo.standalone.js"></script>
 
     <title>BanglaTime</title>
 </head>
@@ -127,6 +128,12 @@
 <script type="text/javascript">
     loadlist('3','0');
     app.initialize();
+    $$('.page').swipeRight(function (e) {
+        slide('kolkata.html','right');
+    });
+    $$('.page').swipeLeft(function (e) {
+        slide('country.html','left');
+    });
 </script>
 </body>
 

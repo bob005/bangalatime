@@ -18,6 +18,7 @@
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/slideout.min.js"></script>
+    <script type="text/javascript" src="js/quo.standalone.js"></script>
 
     <title>BanglaTime</title>
 </head>
@@ -135,6 +136,12 @@
         }
     });
     app.initialize();
+    $$('.cover').swipeRight(function (e) {
+        slide('sports.html','right');
+    });
+    $$('.cover').swipeLeft(function (e) {
+        slide('lifestyle.html','left');
+    });
 </script>
 </body>
 
