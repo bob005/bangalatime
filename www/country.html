@@ -133,11 +133,12 @@
     var mc = new Hammer(myElement,{
         domEvents:true
     });
-    mc.swipe(function (e) {
-        alert(e.direction);
-        //slide('state.html','right');
-
-        //slide('world.html','left');
+    mc.on('swipe',function (e) {
+        if(e.direction==2){
+            slide('state.html','right')
+        }else if(e.direction==4){
+            slide('world.html','left');
+        }
     });
 </script>
 </body>

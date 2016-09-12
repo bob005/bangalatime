@@ -131,17 +131,11 @@
     app.initialize();
     var myElement = document.getElementsByClassName('page');
     var mc = new Hammer(myElement,{
-        domEvents:true,
-        preset: [
-            // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
-            [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }]
-        ]
+        domEvents:true
     });
-    mc.swiperight(function (e) {
-        slide('sports.html','right');
-    });
-    mc.swipeleft(function (e) {
-        slide('lifestyle.html','left');
+    mc.on('swipe',function (e) {
+        if(e.direction==2){slide('sports.html','right')}
+        else if(e.direction==4){slide('lifestyle.html','left')}
     });
 </script>
 </body>
