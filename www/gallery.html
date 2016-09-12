@@ -137,16 +137,6 @@
         }
     });
     app.initialize();
-    $('.cover').each(function () {
-        new Hammer($(this),{
-            domEvents:true,
-            multiUser: true
-        }).on('swipe',function (e) {
-            if(e.direction==4){slide('business.html','right')}
-            else if(e.direction==2){slide('video.html','left')}
-        });
-    });
-
 </script>
 </body>
 

@@ -120,6 +120,15 @@ function loadgal(last){
                     $('.lightgallery[data-id='+reply[post].id+']').lightGallery();
                 }
                 scrollDetectEnable = true;
+                $('.cover').each(function () {
+                    new Hammer($(this),{
+                        domEvents:true,
+                        multiUser: true
+                    }).on('swipe',function (e) {
+                        if(e.direction==4){slide('business.html','right')}
+                        else if(e.direction==2){slide('video.html','left')}
+                    });
+                });
             } else {
                 $('.loaderror').html('That\'s all folks!!');
                 $('.flaticon-refresh-button').addClass('flaticon-check-square').removeClass('flaticon-refresh-button').removeClass('rotating');
@@ -163,6 +172,15 @@ function loadvidgal(last){
                     window.plugins.orientationLock.lock("portrait");
                 });
                 scrollDetectEnable = true;
+                $('.appsl-vid-gallery a').each(function () {
+                    new Hammer($(this),{
+                        domEvents:true,
+                        multiUser: true
+                    }).on('swipe',function (e) {
+                        if(e.direction==4){slide('gallery.html','right')}
+                        else if(e.direction==2){golive()}
+                    });
+                });
             } else {
                 $('.loaderror').html('That\'s all folks!!');
                 $('.flaticon-refresh-button').addClass('flaticon-check-square').removeClass('flaticon-refresh-button').removeClass('rotating');
@@ -207,8 +225,8 @@ function slide(hrf,direction) {
                     "duration"         :  300, // in milliseconds (ms), default 400
                     "slowdownfactor"   :    1, // overlap views (higher number is more) or no overlap (1). -1 doesn't slide at all. Default 4
                     //"slidePixels"      :  100, // optional, works nice with slowdownfactor -1 to create a 'material design'-like effect. Default not set so it slides the entire page.
-                    "iosdelay"         :  300, // ms to wait for the iOS webview to update before animation kicks in, default 60
-                    "androiddelay"     :  300, // same as above but for Android, default 70
+                    "iosdelay"         :  200, // ms to wait for the iOS webview to update before animation kicks in, default 60
+                    "androiddelay"     :  200, // same as above but for Android, default 70
                     "fixedPixelsTop"   :   44, // the number of pixels of your fixed header, default 0 (iOS and Android)
                     "fixedPixelsBottom":    0, // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
                     'href'             :  hrf
@@ -220,8 +238,8 @@ function slide(hrf,direction) {
             window.plugins.nativepagetransitions.flip({
                     "direction"      : "right", // 'left|right|up|down', default 'right' (Android currently only supports left and right)
                     "duration"       :  300, // in milliseconds (ms), default 400
-                    "iosdelay"       :  300, // ms to wait for the iOS webview to update before animation kicks in, default 60
-                    "androiddelay"   :  300, // same as above but for Android, default 70
+                    "iosdelay"       :  200, // ms to wait for the iOS webview to update before animation kicks in, default 60
+                    "androiddelay"   :  200, // same as above but for Android, default 70
                     'href'           :  hrf
                 },
                 function () {

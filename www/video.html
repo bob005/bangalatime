@@ -137,15 +137,6 @@
         }
     });
     app.initialize();
-    $('.appsl-vid-gallery a').each(function () {
-        new Hammer($(this),{
-            domEvents:true,
-            multiUser: true
-        }).on('swipe',function (e) {
-            if(e.direction==4){slide('gallery.html','right')}
-            else if(e.direction==2){golive()}
-        });
-    });
 </script>
 </body>
 
