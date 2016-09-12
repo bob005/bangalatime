@@ -204,11 +204,11 @@ function slide(hrf,direction) {
             window.plugins.nativepagetransitions.slide(
                 {
                     "direction"        : direction, // 'left|right|up|down', default 'left' (which is like 'next')
-                    "duration"         :  400, // in milliseconds (ms), default 400
+                    "duration"         :  300, // in milliseconds (ms), default 400
                     "slowdownfactor"   :    1, // overlap views (higher number is more) or no overlap (1). -1 doesn't slide at all. Default 4
                     //"slidePixels"      :  100, // optional, works nice with slowdownfactor -1 to create a 'material design'-like effect. Default not set so it slides the entire page.
-                    "iosdelay"         :  500, // ms to wait for the iOS webview to update before animation kicks in, default 60
-                    "androiddelay"     :  500, // same as above but for Android, default 70
+                    "iosdelay"         :  200, // ms to wait for the iOS webview to update before animation kicks in, default 60
+                    "androiddelay"     :  200, // same as above but for Android, default 70
                     "fixedPixelsTop"   :   44, // the number of pixels of your fixed header, default 0 (iOS and Android)
                     "fixedPixelsBottom":    0, // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
                     'href'             :  hrf
@@ -219,9 +219,9 @@ function slide(hrf,direction) {
         } else if (direction == 'flip') {
             window.plugins.nativepagetransitions.flip({
                     "direction"      : "right", // 'left|right|up|down', default 'right' (Android currently only supports left and right)
-                    "duration"       :  400, // in milliseconds (ms), default 400
-                    "iosdelay"       :  500, // ms to wait for the iOS webview to update before animation kicks in, default 60
-                    "androiddelay"   :  500, // same as above but for Android, default 70
+                    "duration"       :  300, // in milliseconds (ms), default 400
+                    "iosdelay"       :  200, // ms to wait for the iOS webview to update before animation kicks in, default 60
+                    "androiddelay"   :  200, // same as above but for Android, default 70
                     'href'           :  hrf
                 },
                 function () {
