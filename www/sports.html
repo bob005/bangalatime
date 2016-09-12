@@ -109,7 +109,7 @@
         <button class="toggle-button"><i class="flaticon-menu-button"></i></button>
         <img src="img/logo.png" alt="" >
     </header>
-    <div class="page" data-category="6">
+    <div class="page" id="page" data-category="6">
         <h2 class="pageTitle">খেলা</h2>
         <section>
             <ul class="postlist" data-first="0"></ul>
@@ -129,19 +129,13 @@
 <script type="text/javascript">
     loadlist('6','0');
     app.initialize();
-    var myElement = document.getElementsByClassName('page');
+    var myElement = document.getElementById('page');
     var mc = new Hammer(myElement,{
-        domEvents:true,
-        preset: [
-            // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
-            [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }]
-        ]
+        domEvents:true
     });
-    mc.swiperight(function (e) {
-        slide('world.html','right');
-    });
-    mc.swipeleft(function (e) {
-        slide('entertainment.html','left');
+    mc.on('swipe',function (e) {
+        if(e.direction==4){slide('world.html','right')}
+        else if(e.direction==2){slide('entertainment.html','left')}
     });
 </script>
 </body>

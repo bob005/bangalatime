@@ -136,21 +136,17 @@
             loadgal($('.page').attr('data-last'));
         }
     });
-    var myElement = document.getElementsByClassName('cover');
-    var mc = new Hammer(myElement,{
-        domEvents:true,
-        preset: [
-            // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
-            [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }]
-        ]
-    });
     app.initialize();
-    mc.swiperight(function (e) {
-        slide('sports.html','right');
+    $('.cover').each(function () {
+        new Hammer($(this),{
+            domEvents:true,
+            multiUser: true
+        }).on('swipe',function (e) {
+            if(e.direction==4){slide('business.html','right')}
+            else if(e.direction==2){slide('video.html','left')}
+        });
     });
-    mc.swipeleft(function (e) {
-        slide('lifestyle.html','left');
-    });
+
 </script>
 </body>
 

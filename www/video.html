@@ -137,19 +137,14 @@
         }
     });
     app.initialize();
-    var myElement = document.querySelectorAll('.appsl-vid-gallery a');
-    var mc = new Hammer(myElement,{
-        domEvents:true,
-        preset: [
-            // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
-            [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }]
-        ]
-    });
-    mc.swiperight(function (e) {
-        slide('gallery.html','right');
-    });
-    mc.swipeleft(function (e) {
-        golive();
+    $('.appsl-vid-gallery a').each(function () {
+        new Hammer($(this),{
+            domEvents:true,
+            multiUser: true
+        }).on('swipe',function (e) {
+            if(e.direction==4){slide('gallery.html','right')}
+            else if(e.direction==2){golive()}
+        });
     });
 </script>
 </body>
