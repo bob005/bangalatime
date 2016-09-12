@@ -17,7 +17,8 @@
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/slideout.min.js"></script>
-    <script type="text/javascript" src="js/quo.standalone.js"></script>
+    <script type="text/javascript" src="js/hammer.min.js"></script>
+    <script type="text/javascript" src="js/hammer-time.min.js"></script>
 
     <title>BanglaTime</title>
 </head>
@@ -128,7 +129,15 @@
 <script type="text/javascript">
     loadlist('0','0');
     app.initialize();
-    $$('.page').swipeLeft(function (e) {
+    var myElement = document.getElementsByClassName('page');
+    var mc = new Hammer(myElement,{
+        domEvents:true,
+        preset: [
+            // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
+            [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }]
+        ]
+    });
+    mc.swipeleft(function (e) {
         slide('kolkata.html','left');
     });
 </script>

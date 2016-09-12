@@ -18,7 +18,8 @@
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/slideout.min.js"></script>
-    <script type="text/javascript" src="js/quo.standalone.js"></script>
+    <script type="text/javascript" src="js/hammer.min.js"></script>
+    <script type="text/javascript" src="js/hammer-time.min.js"></script>
 
     <title>BanglaTime</title>
 </head>
@@ -135,11 +136,19 @@
             loadgal($('.page').attr('data-last'));
         }
     });
+    var myElement = document.getElementsByClassName('cover');
+    var mc = new Hammer(myElement,{
+        domEvents:true,
+        preset: [
+            // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
+            [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }]
+        ]
+    });
     app.initialize();
-    $$('.cover').swipeRight(function (e) {
+    mc.swiperight(function (e) {
         slide('sports.html','right');
     });
-    $$('.cover').swipeLeft(function (e) {
+    mc.swipeleft(function (e) {
         slide('lifestyle.html','left');
     });
 </script>

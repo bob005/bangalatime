@@ -18,7 +18,8 @@
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/slideout.min.js"></script>
-    <script type="text/javascript" src="js/quo.standalone.js"></script>
+    <script type="text/javascript" src="js/hammer.min.js"></script>
+    <script type="text/javascript" src="js/hammer-time.min.js"></script>
 
     <title>BanglaTime</title>
 </head>
@@ -136,10 +137,18 @@
         }
     });
     app.initialize();
-    $$('.appsl-vid-gallery a').swipeRight(function (e) {
+    var myElement = document.querySelectorAll('.appsl-vid-gallery a');
+    var mc = new Hammer(myElement,{
+        domEvents:true,
+        preset: [
+            // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
+            [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }]
+        ]
+    });
+    mc.swiperight(function (e) {
         slide('gallery.html','right');
     });
-    $$('.appsl-vid-gallery a').swipeLeft(function (e) {
+    mc.swipeleft(function (e) {
         golive();
     });
 </script>
