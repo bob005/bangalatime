@@ -109,7 +109,7 @@
         <button class="toggle-button"><i class="flaticon-menu-button"></i></button>
         <img src="img/logo.png" alt="" >
     </header>
-    <div class="page" data-category="4">
+    <div class="page" id="page" data-category="4">
         <h2 class="pageTitle">দেশ</h2>
         <section>
             <ul class="postlist" data-first="0"></ul>
@@ -129,7 +129,7 @@
 <script type="text/javascript">
     loadlist('4','0');
     app.initialize();
-    var myElement = document.getElementsByClassName('page');
+    var myElement = document.getElementById('page');
     var mc = new Hammer(myElement,{
         domEvents:true
     });
