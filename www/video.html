@@ -142,9 +142,9 @@
         domEvents:true
     });
     mc.on('swipe',function (e) {
-        if((e.changedPointers[0].x-e.deltaX) < 20 && e.direction==4) {
+        if((e.changedPointers[0].screenX-e.deltaX) < 20 && e.direction==4) {
             slideout.open();
-        }else if((e.changedPointers[0].x-e.deltaX) > (window.screen.width / 2) && e.direction==2 && slideout.isOpen()) {
+        }else if((e.changedPointers[0].screenX-e.deltaX) > (window.screen.width / 2) && e.direction==2 && slideout.isOpen()) {
             slideout.close();
         }else{
             if(e.direction==4 && e.target.className == ''){slide('gallery.html','right')}
