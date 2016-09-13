@@ -110,7 +110,7 @@
         <button class="toggle-button"><i class="flaticon-menu-button"></i></button>
         <img src="img/logo.png" alt="" >
     </header>
-    <div class="page" data-category="9" data-first="0">
+    <div class="page" id="page" data-category="9" data-first="0">
         <h2 class="pageTitle">ভিডিও</h2>
         <section>
             <ul class="appsl-vid-gallery"></ul>
@@ -137,6 +137,21 @@
         }
     });
     app.initialize();
+    var myElement = document.getElementById('page');
+    var mc = new Hammer(myElement,{
+        domEvents:true
+    });
+    mc.on('swipe',function (e) {
+        if((e.changedPointers[0].x-e.deltaX) < 20 && e.direction==4) {
+            slideout.open();
+        }else if((e.changedPointers[0].x-e.deltaX) > (window.screen.width / 2) && e.direction==2 && slideout.isOpen()) {
+            slideout.close();
+        }else{
+            if(e.direction==4 && e.target.className == ''){slide('gallery.html','right')}
+            else if(e.direction==2 && e.target.className == ''){golive()}
+        }
+
+    });
 </script>
 </body>
 

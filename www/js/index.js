@@ -120,15 +120,6 @@ function loadgal(last){
                     $('.lightgallery[data-id='+reply[post].id+']').lightGallery();
                 }
                 scrollDetectEnable = true;
-                $('.cover').each(function () {
-                    new Hammer($(this),{
-                        domEvents:true,
-                        multiUser: true
-                    }).on('swipe',function (e) {
-                        if(e.direction==4){slide('business.html','right')}
-                        else if(e.direction==2){slide('video.html','left')}
-                    });
-                });
             } else {
                 $('.loaderror').html('That\'s all folks!!');
                 $('.flaticon-refresh-button').addClass('flaticon-check-square').removeClass('flaticon-refresh-button').removeClass('rotating');
@@ -172,15 +163,6 @@ function loadvidgal(last){
                     window.plugins.orientationLock.lock("portrait");
                 });
                 scrollDetectEnable = true;
-                $('.appsl-vid-gallery a').each(function () {
-                    new Hammer($(this),{
-                        domEvents:true,
-                        multiUser: true
-                    }).on('swipe',function (e) {
-                        if(e.direction==4){slide('gallery.html','right')}
-                        else if(e.direction==2){golive()}
-                    });
-                });
             } else {
                 $('.loaderror').html('That\'s all folks!!');
                 $('.flaticon-refresh-button').addClass('flaticon-check-square').removeClass('flaticon-refresh-button').removeClass('rotating');
