@@ -17,6 +17,8 @@
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/slideout.min.js"></script>
+    <script type="text/javascript" src="js/hammer.min.js"></script>
+    <script type="text/javascript" src="js/hammer-time.min.js"></script>
 
     <title>BanglaTime</title>
 </head>
@@ -107,7 +109,7 @@
         <button class="toggle-button"><i class="flaticon-menu-button"></i></button>
         <img src="img/logo.png" alt="" >
     </header>
-    <div class="page">
+    <div class="page" id="page">
         <section class="clearfix topdog">
             <span id="bc" class="right"></span><a href="javascript:back();"><i class="flaticon-next-page reverse left"></i> <small>ফিরে যান</small></a>
         </section>
@@ -138,10 +140,27 @@
         crossDomain: true,
         data: {type: 'post', id:postid},
         success: function(reply){
+            console.log(reply);
             reply = $.parseJSON(reply);
+            console.log(reply);
             if(reply[0]){
                 for(post in reply){
                     $("article").html('<h2>'+reply[post].title+'</h2><h5>'+reply[post].reportby+', প্রকাশিত : '+datecon(reply[post].dte)+'</h5><img src="http://banglatimetv.com/news/'+reply[post].img+'" alt=""><div class="post">'+reply[post].content+'</div>');
+                    var myElement = document.getElementById('page');
+                    var mc = new Hammer(myElement,{
+                        domEvents:true
+                    });
+                    mc.on('swipe',function (e) {
+                        if((e.changedPointers[0].screenX-e.deltaX) < 20 && e.direction==4) {
+                            slideout.open();
+                        }else if((e.changedPointers[0].screenX-e.deltaX) > (window.screen.width / 2) && e.direction==2 && slideout.isOpen()) {
+                            slideout.close();
+                        }else{
+                            if(e.direction==4 && reply[post].prev){slide('post.html?id='+reply[post].prev+'&ref='+get('ref'),'right')}
+                            else if(e.direction==2 && reply[post].next){slide('post.html?id='+reply[post].next+'&ref='+get('ref'),'left')}
+                        }
+
+                    });
                     loadrelated(postid,reply[post].id);
                     var catname;
                     switch (reply[post].id){
@@ -181,7 +200,8 @@
             console.log(reply);
         }
     });
-    app.initialize();
+    app.initialize()
+
 </script>
 </body>
 
