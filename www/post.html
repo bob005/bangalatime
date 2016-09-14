@@ -140,12 +140,11 @@
         crossDomain: true,
         data: {type: 'post', id:postid},
         success: function(reply){
-            console.log(reply);
             reply = $.parseJSON(reply);
             console.log(reply);
             if(reply[0]){
-                for(post in reply){
-                    $("article").html('<h2>'+reply[post].title+'</h2><h5>'+reply[post].reportby+', প্রকাশিত : '+datecon(reply[post].dte)+'</h5><img src="http://banglatimetv.com/news/'+reply[post].img+'" alt=""><div class="post">'+reply[post].content+'</div>');
+                
+                    $("article").html('<h2>'+reply[0].title+'</h2><h5>'+reply[0].reportby+', প্রকাশিত : '+datecon(reply[0].dte)+'</h5><img src="http://banglatimetv.com/news/'+reply[0].img+'" alt=""><div class="post">'+reply[0].content+'</div>');
                     var myElement = document.getElementById('page');
                     var mc = new Hammer(myElement,{
                         domEvents:true
@@ -156,14 +155,14 @@
                         }else if((e.changedPointers[0].screenX-e.deltaX) > (window.screen.width / 2) && e.direction==2 && slideout.isOpen()) {
                             slideout.close();
                         }else{
-                            if(e.direction==4 && reply[post].prev){slide('post.html?id='+reply[post].prev+'&ref='+get('ref'),'right')}
-                            else if(e.direction==2 && reply[post].next){slide('post.html?id='+reply[post].next+'&ref='+get('ref'),'left')}
+                            if(e.direction==4 && reply[0]['prev']){slide('post.html?id='+ reply[0]['prev']+'&ref='+get('ref'),'right')}
+                            else if(e.direction==2 && reply[0]['next']){slide('post.html?id='+ reply[0]['next']+'&ref='+get('ref'),'left')}
                         }
 
                     });
-                    loadrelated(postid,reply[post].id);
+                    loadrelated(postid,reply[0].id);
                     var catname;
-                    switch (reply[post].id){
+                    switch (reply[0].id){
                         case '2':
                             catname = "কলকাতা";
                             break;
@@ -193,7 +192,7 @@
                             break;
                     }
                     $('#bc').html('<i class="flaticon-home left"></i> <small>&Gt; '+catname+'</small>');
-                }
+                
             }
         },
         error: function(reply){
